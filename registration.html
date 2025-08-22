@@ -1122,6 +1122,12 @@
                 console.error("Fallback register error:", e2);
               }
             }
+            // Save local progress and advance to step 2
+            try {
+              const payload = collectAllFields();
+              const PROGRESS_KEY = "empresarioRegProgress";
+              localStorage.setItem(PROGRESS_KEY, JSON.stringify({ step: 2, data: payload }));
+            } catch (_) {}
             setTimeout(() => {
               nextStep(2);
               nextBtn.innerHTML = "Next";
@@ -1139,6 +1145,82 @@
           nextBtn.disabled = false;
         }
       };
+
+      // Progress persistence helpers
+      const PROGRESS_KEY = "empresarioRegProgress";
+      function getCurrentStepNumber() {
+        for (let i = 1; i <= 4; i++) {
+          const el = document.getElementById("step-" + i);
+          if (el && el.style.display !== "none") return i;
+        }
+        return 1;
+      }
+
+      function saveProgress() {
+        try {
+          const data = collectAllFields();
+          const step = getCurrentStepNumber();
+          localStorage.setItem(PROGRESS_KEY, JSON.stringify({ step, data }));
+        } catch (e) {
+          console.warn("Save progress failed:", e);
+        }
+      }
+
+      function loadProgress() {
+        try {
+          const raw = localStorage.getItem(PROGRESS_KEY);
+          if (!raw) return;
+          const saved = JSON.parse(raw);
+          const data = saved?.data || {};
+          // Step 1
+          if (typeof data.email === "string") {
+            const emailEl = document.getElementById("email");
+            if (emailEl) emailEl.value = data.email;
+          }
+          // Step 2 inputs (order-based like collectAllFields)
+          const step2Inputs = document.querySelectorAll("#step-2 input");
+          if (step2Inputs[0]) step2Inputs[0].value = data.fullName || "";
+          if (step2Inputs[1]) step2Inputs[1].value = data.personalEmail || "";
+          if (step2Inputs[2]) step2Inputs[2].value = data.phone || "";
+          if (step2Inputs[3]) step2Inputs[3].value = data.organization || "";
+          if (step2Inputs[4]) step2Inputs[4].value = data.city || "";
+          // Step 3
+          const step3TextInputs = document.querySelectorAll("#step-3 input");
+          const step3Selects = document.querySelectorAll("#step-3 select");
+          if (step3TextInputs[0]) step3TextInputs[0].value = data.startupName || "";
+          if (step3TextInputs[1]) step3TextInputs[1].value = data.website || "";
+          if (step3Selects[0]) step3Selects[0].value = data.industry || "";
+          if (step3Selects[1]) step3Selects[1].value = data.socialImpact || "";
+          if (step3Selects[2]) step3Selects[2].value = data.iitkgpAffiliation || "";
+          if (step3Selects[3]) step3Selects[3].value = data.aiMlCore || "";
+          // TIS
+          const tisInput = document.querySelector('#step-3 input[type="text"]:last-of-type');
+          if (tisInput) tisInput.value = data.tis || "";
+          // Step 4 textareas
+          const step4Areas = document.querySelectorAll("#step-4 textarea");
+          if (step4Areas[0]) step4Areas[0].value = data.problem || "";
+          if (step4Areas[1]) step4Areas[1].value = data.solution || "";
+          if (step4Areas[2]) step4Areas[2].value = data.market || "";
+          if (step4Areas[3]) step4Areas[3].value = data.traction || "";
+          if (step4Areas[4]) step4Areas[4].value = data.revenue || "";
+          if (step4Areas[5]) step4Areas[5].value = data.extra || "";
+          // Advance to saved step if > 1
+          const savedStep = parseInt(saved?.step, 10);
+          if (!isNaN(savedStep) && savedStep >= 2 && savedStep <= 4) {
+            nextStep(savedStep);
+          }
+        } catch (e) {
+          console.warn("Load progress failed:", e);
+        }
+      }
+
+      // Auto-save on input changes
+      document
+        .querySelectorAll('#regForm input, #regForm select, #regForm textarea')
+        .forEach((el) => {
+          el.addEventListener('input', saveProgress);
+          el.addEventListener('change', saveProgress);
+        });
 
       function validateStepRequiredFields(stepNumber) {
         const container = document.getElementById("step-" + stepNumber);
@@ -1170,12 +1252,14 @@
 
       function handleStep2Next() {
         if (validateStepRequiredFields(2)) {
+          saveProgress();
           nextStep(3);
         }
       }
 
       function handleStep3Next() {
         if (validateStepRequiredFields(3)) {
+          saveProgress();
           nextStep(4);
         }
       }
@@ -1240,6 +1324,9 @@
           extra,
         };
       }
+
+      // Attempt to restore progress on load
+      loadProgress();
     </script>
   </body>
 </html>
