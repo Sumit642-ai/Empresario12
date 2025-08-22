@@ -1088,41 +1088,7 @@
           
           const text = await res.text();
           if (text === "OTP valid") {
-            // Pre-save draft row keyed by email; fallback to register if presave not available
-            try {
-              const draftPayload = collectAllFields();
-              draftPayload.submittedAt = new Date().toISOString();
-              const presaveRes = await fetch(scriptURL, {
-                method: "POST",
-                mode: "cors",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams({ action: "presave", ...draftPayload }),
-              });
-              const presaveText = (await presaveRes.text()).trim();
-              if (!presaveRes.ok || !/^(PRESAVED|OK)$/i.test(presaveText)) {
-                await fetch(scriptURL, {
-                  method: "POST",
-                  mode: "cors",
-                  headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                  body: new URLSearchParams({ action: "register", email: draftPayload.email, submittedAt: draftPayload.submittedAt }),
-                });
-              }
-            } catch (e) {
-              console.error("Presave error:", e);
-              try {
-                const draftPayload = collectAllFields();
-                draftPayload.submittedAt = new Date().toISOString();
-                await fetch(scriptURL, {
-                  method: "POST",
-                  mode: "cors",
-                  headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                  body: new URLSearchParams({ action: "register", email: draftPayload.email, submittedAt: draftPayload.submittedAt }),
-                });
-              } catch (e2) {
-                console.error("Fallback register error:", e2);
-              }
-            }
-            // Save local progress and advance to step 2
+            // Advance to step 2 (removed early presave to keep verification token for final submit)
             try {
               const payload = collectAllFields();
               const PROGRESS_KEY = "empresarioRegProgress";
