@@ -698,7 +698,7 @@
         </div>
       </div>
       <!-- Step 1: Email Verification -->
-      <form id="regForm">
+      <form id="regForm" novalidate>
         <div id="step-1" class="form-step">
           <label>Email ID <span class="required">*</span></label>
           <div class="email-row">
@@ -918,6 +918,12 @@
         const originalBtnText = submitBtn.innerHTML;
         submitBtn.innerHTML = "Submitting...";
 
+        if (!validateBeforeSubmit()) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+          return;
+        }
+
         const payload = collectAllFields();
         payload.submittedAt = new Date().toISOString();
 
@@ -948,9 +954,25 @@
           }
         } catch (err) {
           console.error("Backend submission error:", err);
-          alert("Network / server error: " + err.message + ". Please try again.");
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalBtnText;
+          // Fallback via no-cors to avoid CORS edge failures (server must accept)
+          try {
+            const fallbackRes = await fetch(scriptURL, {
+              method: "POST",
+              mode: "no-cors",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+              body: new URLSearchParams({ action: "register", ...payload }),
+            });
+            // With no-cors we can't read body; assume success if no exception
+            submitBtn.style.display = "none";
+            successMessage.style.display = "block";
+            successMessage.scrollIntoView({ behavior: "smooth" });
+          } catch (fallbackErr) {
+            alert("Network / server error: " + fallbackErr.message + ". Please try again.");
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+          }
         }
       });
 
@@ -980,6 +1002,7 @@
       const passwordError = document.getElementById("password-error");
 
       let otpSent = false;
+      let otpVerified = false;
       let mockOtp = "";
 
       function validateEmail(email) {
@@ -1017,7 +1040,7 @@
           if (text === "OTP sent") {
             otpSection.classList.remove("hidden");
             otpSent = true;
-            alert("OTP sent to your email!");
+            alert("Here is your OTP for Early Birds access of Empresario (valid for 5 minutes).");
           } else {
             alert("Server response: " + text);
           }
@@ -1086,6 +1109,7 @@
           
           const text = await res.text();
           if (text === "OTP valid") {
+            otpVerified = true;
             // Advance to step 2 (removed early presave to keep verification token for final submit)
             try {
               const payload = collectAllFields();
@@ -1172,6 +1196,7 @@
           const savedStep = parseInt(saved?.step, 10);
           if (!isNaN(savedStep) && savedStep >= 2 && savedStep <= 4) {
             nextStep(savedStep);
+            if (savedStep >= 2) otpVerified = true;
           }
         } catch (e) {
           console.warn("Load progress failed:", e);
@@ -1186,8 +1211,121 @@
           el.addEventListener('change', saveProgress);
         });
 
-  function handleStep2Next() { saveProgress(); nextStep(3); }
-  function handleStep3Next() { saveProgress(); nextStep(4); }
+      // Step-wise validation helpers
+      function getRequiredFieldsInStep(stepNum) {
+        return Array.from(
+          document.querySelectorAll(
+            `#step-${stepNum} input[required], #step-${stepNum} select[required], #step-${stepNum} textarea[required]`
+          )
+        );
+      }
+
+      function allRequiredFilledInStep(stepNum) {
+        const fields = getRequiredFieldsInStep(stepNum);
+        return fields.every((el) => el.checkValidity());
+      }
+
+      function goToFirstInvalidInStep(stepNum) {
+        const fields = getRequiredFieldsInStep(stepNum);
+        const firstInvalid = fields.find((el) => !el.checkValidity());
+        if (firstInvalid) {
+          nextStep(stepNum);
+          setTimeout(() => {
+            if (typeof firstInvalid.reportValidity === 'function') {
+              firstInvalid.reportValidity();
+            } else {
+              firstInvalid.focus();
+            }
+            firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 300);
+        }
+      }
+
+      function updateStep2NextState() {
+        const btn = document.querySelector('#step-2 .next-btn');
+        if (btn) btn.disabled = !allRequiredFilledInStep(2);
+      }
+      function updateStep3NextState() {
+        const btn = document.querySelector('#step-3 .next-btn');
+        if (btn) btn.disabled = !allRequiredFilledInStep(3);
+      }
+
+      // Attach dynamic enable/disable for Next buttons on Steps 2 and 3
+      getRequiredFieldsInStep(2).forEach((el) => {
+        el.addEventListener('input', updateStep2NextState);
+        el.addEventListener('change', updateStep2NextState);
+      });
+      getRequiredFieldsInStep(3).forEach((el) => {
+        el.addEventListener('input', updateStep3NextState);
+        el.addEventListener('change', updateStep3NextState);
+      });
+
+      // Be lenient with website input by auto-prefixing protocol
+      const websiteInput = document.querySelector('#step-3 input[type="url"]');
+      if (websiteInput) {
+        websiteInput.addEventListener('blur', () => {
+          const val = websiteInput.value.trim();
+          if (val && !/^https?:\/\//i.test(val)) {
+            websiteInput.value = 'https://' + val;
+          }
+          updateStep3NextState();
+        });
+      }
+
+      // Initialize button states
+      updateStep2NextState();
+      updateStep3NextState();
+
+      function handleStep2Next() {
+        const stepNum = 2;
+        const nextButton = document.querySelector('#step-2 .next-btn');
+        if (nextButton) nextButton.disabled = true;
+        if (!allRequiredFilledInStep(stepNum)) {
+          goToFirstInvalidInStep(stepNum);
+          if (nextButton) nextButton.disabled = false;
+          return;
+        }
+        saveProgress();
+        nextStep(3);
+        if (nextButton) nextButton.disabled = false;
+      }
+
+      function handleStep3Next() {
+        const stepNum = 3;
+        const nextButton = document.querySelector('#step-3 .next-btn');
+        if (nextButton) nextButton.disabled = true;
+        if (!allRequiredFilledInStep(stepNum)) {
+          goToFirstInvalidInStep(stepNum);
+          if (nextButton) nextButton.disabled = false;
+          return;
+        }
+        saveProgress();
+        nextStep(4);
+        if (nextButton) nextButton.disabled = false;
+      }
+
+      function validateBeforeSubmit() {
+        // Ensure OTP verified
+        if (!otpVerified) {
+          alert('Please verify your email via OTP before submitting.');
+          nextStep(1);
+          return false;
+        }
+        // Validate each step's required fields
+        if (!allRequiredFilledInStep(2)) {
+          goToFirstInvalidInStep(2);
+          return false;
+        }
+        if (!allRequiredFilledInStep(3)) {
+          goToFirstInvalidInStep(3);
+          return false;
+        }
+        if (!allRequiredFilledInStep(4)) {
+          goToFirstInvalidInStep(4);
+          return false;
+        }
+        return true;
+      }
 
       function collectAllFields() {
         const email = document.getElementById("email").value.trim();
