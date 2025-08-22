@@ -717,17 +717,18 @@
           </div>
           <div id="otp-section" class="hidden">
             <label>Enter OTP <span class="required">*</span></label>
-            <input type="text" id="otp" maxlength="6" placeholder="Enter OTP" />
+            <input type="text" id="otp" maxlength="6" placeholder="Enter OTP" required />
             <div id="otp-error" class="error-message">
               Please enter the OTP sent to your email.
             </div>
             <label>New Password <span class="required">*</span></label>
-            <input type="password" id="password" placeholder="New Password" />
+            <input type="password" id="password" placeholder="New Password" required />
             <label>Confirm Password <span class="required">*</span></label>
             <input
               type="password"
               id="confirmPassword"
               placeholder="Confirm Password"
+              required
             />
             <div id="password-error" class="error-message">
               Passwords do not match.
@@ -763,9 +764,9 @@
             <label>Startup Name</label>
             <input type="text" required/>
             <label>Website (if any)</label>
-            <input type="url" placeholder="https://www.example.com" />
+            <input type="url" placeholder="https://www.example.com" required />
             <label>Industry/Domain</label>
-            <select>
+            <select required>
               <option value="" disabled selected>Select One</option>
               <option>E-Commerce</option>
               <option>Enterprisetech</option>
@@ -788,7 +789,7 @@
               >Does your startup aim to solve a social or community
               problem?</label
             >
-            <select>
+            <select required>
               <option value="" disabled selected>Select One</option>
               <option>Yes</option>
               <option>No</option>
@@ -797,13 +798,13 @@
               >Is your team founded by IIT Kharagpur students, alumni, or
               faculty?</label
             >
-            <select>
+            <select required>
               <option value="" disabled selected>Select One</option>
               <option>Yes</option>
               <option>No</option>
             </select>
             <label>Is AI/ML a core part of your product or tech stack?</label>
-            <select>
+            <select required>
               <option value="" disabled selected>Select One</option>
               <option>Yes</option>
               <option>No</option>
@@ -830,7 +831,7 @@
             <label>Revenue model</label>
             <textarea rows="3" required></textarea>
             <label>Anything else you'd like to share? (Optional)</label>
-            <textarea rows="3" required></textarea>
+            <textarea rows="3"></textarea>
           </div>
           <button id="submitBtn" class="button" type="submit">Submit</button>
           <div id="success-message" class="success-message">
@@ -1030,9 +1031,7 @@
       function validateStep1() {
         let valid = true;
         if (!validateEmail(emailInput.value.trim()) || !otpSent) valid = false;
-
         if (otpSection && !otpSection.classList.contains("hidden")) {
-          // Only check format/length here. Actual verification happens on Next click.
           if (!/^[0-9]{6}$/.test(otpInput.value.trim())) {
             otpError.style.display = "block";
             valid = false;
