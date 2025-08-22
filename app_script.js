@@ -6,10 +6,12 @@ function doPost(e) {
   try {
     const action = e.parameter.action;
 
-    if (action === "sendOTP") {
+    if (action === "sendOTP" || action === "sendOtp") {
       return sendOTP(e);
-    } else if (action === "verifyOTP") {
+    } else if (action === "verifyOTP" || action === "verifyOtp") {
       return verifyOTP(e);
+    } else if (action === "presave" || action === "preSave") {
+      return presave(e);
     } else if (action === "register") {
       return register(e);
     } else {
@@ -100,47 +102,87 @@ function verifyOTP(e) {
   }
 }
 
+function getOrCreateDataSheetAndHeaders() {
+  let sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(DATA_SHEET_NAME);
+  if (!sheet) {
+    sheet = SpreadsheetApp.openById(SHEET_ID).insertSheet(DATA_SHEET_NAME);
+    sheet.getRange(1, 1, 1, 22).setValues([[
+      "Email", "Password", "Full Name", "Personal Email", "Phone", "Organization", "City",
+      "Startup Name", "Website", "Industry", "Social Impact", "IITKGP Affiliation", "AI/ML Core",
+      "TIS", "Problem", "Solution", "Market", "Traction", "Revenue", "Extra", "Submitted At", "Timestamp"
+    ]]);
+  }
+  return sheet;
+}
+
+function getRowIndexByEmail(sheet, email) {
+  if (!email) return -1;
+  const data = sheet.getDataRange().getValues();
+  for (let i = 1; i < data.length; i++) {
+    if (data[i][0] === email) return i + 1; // 1-based row index
+  }
+  return -1;
+}
+
+function buildRowFromParams(p) {
+  return [
+    p.email || "",
+    p.password || "",
+    p.fullName || "",
+    p.personalEmail || "",
+    p.phone || "",
+    p.organization || "",
+    p.city || "",
+    p.startupName || "",
+    p.website || "",
+    p.industry || "",
+    p.socialImpact || "",
+    p.iitkgpAffiliation || "",
+    p.aiMlCore || "",
+    p.tis || "",
+    p.problem || "",
+    p.solution || "",
+    p.market || "",
+    p.traction || "",
+    p.revenue || "",
+    p.extra || "",
+    p.submittedAt || "",
+    new Date()
+  ];
+}
+
+function presave(e) {
+  try {
+    const sheet = getOrCreateDataSheetAndHeaders();
+    const email = e.parameter.email || "";
+    if (!email) {
+      return ContentService.createTextOutput("Email required");
+    }
+    const rowData = buildRowFromParams(e.parameter);
+    const rowIndex = getRowIndexByEmail(sheet, email);
+    if (rowIndex > 0) {
+      sheet.getRange(rowIndex, 1, 1, rowData.length).setValues([rowData]);
+    } else {
+      sheet.appendRow(rowData);
+    }
+    return ContentService.createTextOutput("PRESAVED");
+  } catch (error) {
+    console.error("Error in presave:", error);
+    return ContentService.createTextOutput("Presave failed: " + error.toString());
+  }
+}
+
 function register(e) {
   try {
-    // Get or create the data sheet
-    let sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(DATA_SHEET_NAME);
-    if (!sheet) {
-      sheet = SpreadsheetApp.openById(SHEET_ID).insertSheet(DATA_SHEET_NAME);
-      // Add headers
-      sheet.getRange(1, 1, 1, 22).setValues([[
-        "Email", "Password", "Full Name", "Personal Email", "Phone", "Organization", "City",
-        "Startup Name", "Website", "Industry", "Social Impact", "IITKGP Affiliation", "AI/ML Core",
-        "TIS", "Problem", "Solution", "Market", "Traction", "Revenue", "Extra", "Submitted At", "Timestamp"
-      ]]);
+    const sheet = getOrCreateDataSheetAndHeaders();
+    const email = e.parameter.email || "";
+    const rowData = buildRowFromParams(e.parameter);
+    const rowIndex = getRowIndexByEmail(sheet, email);
+    if (rowIndex > 0) {
+      sheet.getRange(rowIndex, 1, 1, rowData.length).setValues([rowData]);
+    } else {
+      sheet.appendRow(rowData);
     }
-
-    // Collect all form data
-    const rowData = [
-      e.parameter.email || "",
-      e.parameter.password || "",
-      e.parameter.fullName || "",
-      e.parameter.personalEmail || "",
-      e.parameter.phone || "",
-      e.parameter.organization || "",
-      e.parameter.city || "",
-      e.parameter.startupName || "",
-      e.parameter.website || "",
-      e.parameter.industry || "",
-      e.parameter.socialImpact || "",
-      e.parameter.iitkgpAffiliation || "",
-      e.parameter.aiMlCore || "",
-      e.parameter.tis || "",
-      e.parameter.problem || "",
-      e.parameter.solution || "",
-      e.parameter.market || "",
-      e.parameter.traction || "",
-      e.parameter.revenue || "",
-      e.parameter.extra || "",
-      e.parameter.submittedAt || "",
-      new Date()
-    ];
-
-    sheet.appendRow(rowData);
     return ContentService.createTextOutput("OK");
   } catch (error) {
     console.error("Error in register:", error);
