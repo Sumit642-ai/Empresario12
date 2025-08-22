@@ -717,18 +717,17 @@
           </div>
           <div id="otp-section" class="hidden">
             <label>Enter OTP <span class="required">*</span></label>
-            <input type="text" id="otp" maxlength="6" placeholder="Enter OTP" required />
+            <input type="text" id="otp" maxlength="6" placeholder="Enter OTP" />
             <div id="otp-error" class="error-message">
               Please enter the OTP sent to your email.
             </div>
             <label>New Password <span class="required">*</span></label>
-            <input type="password" id="password" placeholder="New Password" required />
+            <input type="password" id="password" placeholder="New Password" />
             <label>Confirm Password <span class="required">*</span></label>
             <input
               type="password"
               id="confirmPassword"
               placeholder="Confirm Password"
-              required
             />
             <div id="password-error" class="error-message">
               Passwords do not match.
@@ -743,15 +742,15 @@
           <div class="form-section">
             <div class="section-title">Founder & Team Details</div>
             <label>Full Name (Team Leader)</label>
-            <input type="text" required />
+            <input type="text" />
             <label>Email Address</label>
-            <input type="email" required />
+            <input type="email" />
             <label>Phone Number</label>
-            <input type="tel" required />
+            <input type="tel" />
             <label>College/Organization</label>
-            <input type="text" required />
+            <input type="text" />
             <label>City</label>
-            <input type="text" required />
+            <input type="text" />
           </div>
           <button type="button" class="next-btn" onclick="handleStep2Next()">
             Next
@@ -762,11 +761,11 @@
           <div class="form-section">
             <div class="section-title">Startup Details</div>
             <label>Startup Name</label>
-            <input type="text" required />
+            <input type="text" />
             <label>Website (if any)</label>
-            <input type="url" placeholder="https://www.example.com" required />
+            <input type="url" placeholder="https://www.example.com" />
             <label>Industry/Domain</label>
-            <select required>
+            <select>
               <option value="" disabled selected>Select One</option>
               <option>E-Commerce</option>
               <option>Enterprisetech</option>
@@ -789,7 +788,7 @@
               >Does your startup aim to solve a social or community
               problem?</label
             >
-            <select required>
+            <select>
               <option value="" disabled selected>Select One</option>
               <option>Yes</option>
               <option>No</option>
@@ -798,19 +797,19 @@
               >Is your team founded by IIT Kharagpur students, alumni, or
               faculty?</label
             >
-            <select required>
+            <select>
               <option value="" disabled selected>Select One</option>
               <option>Yes</option>
               <option>No</option>
             </select>
             <label>Is AI/ML a core part of your product or tech stack?</label>
-            <select required>
+            <select>
               <option value="" disabled selected>Select One</option>
               <option>Yes</option>
               <option>No</option>
             </select>
-            <label>TIS</label>
-            <input type="text" required />
+            <label>Where did you hear about Empresario?</label>
+            <input type="text" />
           </div>
           <button type="button" class="next-btn" onclick="handleStep3Next()">
             Next
@@ -821,15 +820,15 @@
           <div class="form-section">
             <div class="section-title">Business Overview</div>
             <label>What problem are you solving?</label>
-            <textarea rows="3" required></textarea>
+            <textarea rows="3"></textarea>
             <label>What is your proposed solution?</label>
-            <textarea rows="3" required></textarea>
+            <textarea rows="3"></textarea>
             <label>Target market and estimated size</label>
-            <textarea rows="3" required></textarea>
+            <textarea rows="3"></textarea>
             <label>Traction so far (if any)</label>
-            <textarea rows="3" required></textarea>
+            <textarea rows="3"></textarea>
             <label>Revenue model</label>
-            <textarea rows="3" required></textarea>
+            <textarea rows="3"></textarea>
             <label>Anything else you'd like to share? (Optional)</label>
             <textarea rows="3"></textarea>
           </div>
@@ -1188,47 +1187,8 @@
           el.addEventListener('change', saveProgress);
         });
 
-      function validateStepRequiredFields(stepNumber) {
-        const container = document.getElementById("step-" + stepNumber);
-        if (!container) return true;
-        const requiredFields = container.querySelectorAll(
-          "input[required], select[required], textarea[required]"
-        );
-        for (const field of requiredFields) {
-          const tag = field.tagName.toLowerCase();
-          if (tag === "select") {
-            if (!field.value) {
-              if (typeof field.reportValidity === "function") field.reportValidity();
-              field.focus();
-              return false;
-            }
-          } else if (!field.value || field.value.trim() === "") {
-            if (typeof field.reportValidity === "function") field.reportValidity();
-            field.focus();
-            return false;
-          }
-          if (!field.checkValidity()) {
-            if (typeof field.reportValidity === "function") field.reportValidity();
-            field.focus();
-            return false;
-          }
-        }
-        return true;
-      }
-
-      function handleStep2Next() {
-        if (validateStepRequiredFields(2)) {
-          saveProgress();
-          nextStep(3);
-        }
-      }
-
-      function handleStep3Next() {
-        if (validateStepRequiredFields(3)) {
-          saveProgress();
-          nextStep(4);
-        }
-      }
+  function handleStep2Next() { saveProgress(); nextStep(3); }
+  function handleStep3Next() { saveProgress(); nextStep(4); }
 
       function collectAllFields() {
         const email = document.getElementById("email").value.trim();

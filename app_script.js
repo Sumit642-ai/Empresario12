@@ -43,8 +43,8 @@ function sendOTP(e) {
     // Add OTP record
     sheet.appendRow([email, otp, new Date()]);
 
-    const subject = "Your OTP for Empresario Registration";
-    const body = `Your OTP for Empresario Registration is: ${otp}\n\nThis OTP is valid for 10 minutes.\n\nTeam Empresario\nE-Cell IIT Kharagpur`;
+  const subject = "Your OTP for Empresario Registration";
+  const body = `This is your OTP for Empresario early bird registration: ${otp}\n\nIt is valid for 5 minutes.\n\nTeam Empresario\nE-Cell IIT Kharagpur`;
 
     MailApp.sendEmail({
       to: email,
@@ -78,7 +78,7 @@ function verifyOTP(e) {
     const data = sheet.getDataRange().getValues();
     const now = new Date();
     
-    // Find matching OTP (within last 10 minutes)
+  // Find matching OTP (within last 5 minutes)
     for (let i = data.length - 1; i >= 1; i--) {
       const row = data[i];
       const rowEmail = row[0];
@@ -87,7 +87,7 @@ function verifyOTP(e) {
       
       if (rowEmail === email && rowOTP.toString() === otp.toString()) {
         const timeDiff = (now - timestamp) / (1000 * 60); // difference in minutes
-        if (timeDiff <= 10) {
+  if (timeDiff <= 5) {
           return ContentService.createTextOutput("OTP valid");
         } else {
           return ContentService.createTextOutput("OTP expired");
