@@ -742,15 +742,15 @@
           <div class="form-section">
             <div class="section-title">Founder & Team Details</div>
             <label>Full Name (Team Leader)</label>
-            <input type="text" />
+            <input type="text" required />
             <label>Email Address</label>
-            <input type="email" />
+            <input type="email" required />
             <label>Phone Number</label>
-            <input type="tel" />
+            <input type="tel" required/>
             <label>College/Organization</label>
-            <input type="text" />
+            <input type="text" required />
             <label>City</label>
-            <input type="text" />
+            <input type="text" required />
           </div>
           <button type="button" class="next-btn" onclick="handleStep2Next()">
             Next
@@ -761,7 +761,7 @@
           <div class="form-section">
             <div class="section-title">Startup Details</div>
             <label>Startup Name</label>
-            <input type="text" />
+            <input type="text" required/>
             <label>Website (if any)</label>
             <input type="url" placeholder="https://www.example.com" />
             <label>Industry/Domain</label>
@@ -809,7 +809,7 @@
               <option>No</option>
             </select>
             <label>Where did you hear about Empresario?</label>
-            <input type="text" />
+            <input type="text" required/>
           </div>
           <button type="button" class="next-btn" onclick="handleStep3Next()">
             Next
@@ -820,17 +820,17 @@
           <div class="form-section">
             <div class="section-title">Business Overview</div>
             <label>What problem are you solving?</label>
-            <textarea rows="3"></textarea>
+            <textarea rows="3" required></textarea>
             <label>What is your proposed solution?</label>
-            <textarea rows="3"></textarea>
+            <textarea rows="3" required></textarea>
             <label>Target market and estimated size</label>
-            <textarea rows="3"></textarea>
+            <textarea rows="3" required></textarea>
             <label>Traction so far (if any)</label>
-            <textarea rows="3"></textarea>
+            <textarea rows="3" required></textarea>
             <label>Revenue model</label>
-            <textarea rows="3"></textarea>
+            <textarea rows="3" required></textarea>
             <label>Anything else you'd like to share? (Optional)</label>
-            <textarea rows="3"></textarea>
+            <textarea rows="3" required></textarea>
           </div>
           <button id="submitBtn" class="button" type="submit">Submit</button>
           <div id="success-message" class="success-message">
