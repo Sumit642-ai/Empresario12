@@ -721,18 +721,7 @@
             <div id="otp-error" class="error-message">
               Please enter the OTP sent to your email.
             </div>
-            <label>New Password <span class="required">*</span></label>
-            <input type="password" id="password" placeholder="New Password" required />
-            <label>Confirm Password <span class="required">*</span></label>
-            <input
-              type="password"
-              id="confirmPassword"
-              placeholder="Confirm Password"
-              required
-            />
-            <div id="password-error" class="error-message">
-              Passwords do not match.
-            </div>
+
           </div>
           <button type="button" class="next-btn" id="nextBtn" disabled>
             Next
@@ -742,15 +731,15 @@
         <div id="step-2" class="form-step" style="display: none">
           <div class="form-section">
             <div class="section-title">Founder & Team Details</div>
-            <label>Full Name (Team Leader)</label>
+            <label>Full Name (Team Leader) <span class="required">*</span></label>
             <input type="text" required />
-            <label>Email Address</label>
+            <label>Email Address <span class="required">*</span></label>
             <input type="email" required />
-            <label>Phone Number</label>
+            <label>Phone Number <span class="required">*</span></label>
             <input type="tel" required/>
-            <label>College/Organization</label>
+            <label>College/Organization <span class="required">*</span></label>
             <input type="text" required />
-            <label>City</label>
+            <label>City <span class="required">*</span></label>
             <input type="text" required />
           </div>
           <button type="button" class="next-btn" onclick="handleStep2Next()">
@@ -761,11 +750,11 @@
         <div id="step-3" class="form-step" style="display: none">
           <div class="form-section">
             <div class="section-title">Startup Details</div>
-            <label>Startup Name</label>
+            <label>Startup Name <span class="required">*</span></label>
             <input type="text" required/>
             <label>Website (if any)</label>
-            <input type="url" placeholder="https://www.example.com" required />
-            <label>Industry/Domain</label>
+            <input type="url" placeholder="https://www.example.com" />
+            <label>Industry/Domain <span class="required">*</span></label>
             <select required>
               <option value="" disabled selected>Select One</option>
               <option>E-Commerce</option>
@@ -787,7 +776,7 @@
             </select>
             <label
               >Does your startup aim to solve a social or community
-              problem?</label
+              problem? <span class="required">*</span></label
             >
             <select required>
               <option value="" disabled selected>Select One</option>
@@ -796,20 +785,20 @@
             </select>
             <label
               >Is your team founded by IIT Kharagpur students, alumni, or
-              faculty?</label
+              faculty? <span class="required">*</span></label
             >
             <select required>
               <option value="" disabled selected>Select One</option>
               <option>Yes</option>
               <option>No</option>
             </select>
-            <label>Is AI/ML a core part of your product or tech stack?</label>
+            <label>Is AI/ML a core part of your product or tech stack? <span class="required">*</span></label>
             <select required>
               <option value="" disabled selected>Select One</option>
               <option>Yes</option>
               <option>No</option>
             </select>
-            <label>Where did you hear about Empresario?</label>
+            <label>Where did you hear about Empresario? <span class="required">*</span></label>
             <input type="text" required/>
           </div>
           <button type="button" class="next-btn" onclick="handleStep3Next()">
@@ -820,15 +809,15 @@
         <div id="step-4" class="form-step" style="display: none">
           <div class="form-section">
             <div class="section-title">Business Overview</div>
-            <label>What problem are you solving?</label>
+            <label>What problem are you solving? <span class="required">*</span></label>
             <textarea rows="3" required></textarea>
-            <label>What is your proposed solution?</label>
+            <label>What is your proposed solution? <span class="required">*</span></label>
             <textarea rows="3" required></textarea>
-            <label>Target market and estimated size</label>
+            <label>Target market and estimated size <span class="required">*</span></label>
             <textarea rows="3" required></textarea>
-            <label>Traction so far (if any)</label>
+            <label>Traction so far (if any) <span class="required">*</span></label>
             <textarea rows="3" required></textarea>
-            <label>Revenue model</label>
+            <label>Revenue model <span class="required">*</span></label>
             <textarea rows="3" required></textarea>
             <label>Anything else you'd like to share? (Optional)</label>
             <textarea rows="3"></textarea>
@@ -995,11 +984,8 @@
       const otpSection = document.getElementById("otp-section");
       const nextBtn = document.getElementById("nextBtn");
       const otpInput = document.getElementById("otp");
-      const passwordInput = document.getElementById("password");
-      const confirmPasswordInput = document.getElementById("confirmPassword");
       const emailError = document.getElementById("email-error");
       const otpError = document.getElementById("otp-error");
-      const passwordError = document.getElementById("password-error");
 
       let otpSent = false;
       let otpVerified = false;
@@ -1061,24 +1047,13 @@
           } else {
             otpError.style.display = "none";
           }
-          if (
-            !passwordInput.value ||
-            !confirmPasswordInput.value ||
-            passwordInput.value !== confirmPasswordInput.value
-          ) {
-            passwordError.style.display = "block";
-            valid = false;
-          } else {
-            passwordError.style.display = "none";
-          }
+
         }
         nextBtn.disabled = !valid;
       }
 
       emailInput.addEventListener("input", validateStep1);
       otpInput.addEventListener("input", validateStep1);
-      passwordInput.addEventListener("input", validateStep1);
-      confirmPasswordInput.addEventListener("input", validateStep1);
 
       nextBtn.onclick = async function () {
         if (nextBtn.disabled) return;
@@ -1329,7 +1304,6 @@
 
       function collectAllFields() {
         const email = document.getElementById("email").value.trim();
-  const password = (document.getElementById("password")?.value || "").trim();
 
         // Step 2 (in order)
         const step2Inputs = document.querySelectorAll("#step-2 input");
@@ -1366,7 +1340,6 @@
 
         return {
           email,
-          password,
           fullName,
           personalEmail,
           phone,
