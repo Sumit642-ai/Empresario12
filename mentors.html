@@ -241,27 +241,46 @@
     <div class="opacity-extra-medium "></div>
     <div class="container position-relative z-index-1">
 
-      
-        <h1
-          style="
-            text-align: center; /* centers the heading */
-            font-family: 'Arial', sans-serif; /* changes font */
-            font-size: 60px; /* changes size */
-            font-weight: bold; /* makes it bold */
-            color: #333;
-          "
-        >
-          Previous Year Media
-        </h1>
-        <div
-            class="row row-cols-1 row-cols-lg-3 row-cols-md-2 justify-content-center"
-            id="mentorContainer"
-        >
-            <!-- Mentor cards will be injected here -->
+      <!-- Mentor Tabs -->
+      <div class="row">
+        <div class="col tab-style-01">
+          <ul
+            class="nav nav-tabs justify-content-center border-0 text-center fs-18 alt-font fw-600 mb-3"
+          >
+            <li class="nav-item">
+              <a class="nav-link active" data-bs-toggle="tab" href="#mentors2026" style="margin-top: 10px;"
+                >2026 Mentors</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="tab" href="#previousYearMentors" style="margin-top: 10px;"
+                >Previous Year Mentors</a
+              >
+            </li>
+          </ul>
+          <div class="tab-content">
+            <!-- 2026 Mentors Tab -->
+            <div class="tab-pane fade in active show" id="mentors2026">
+              <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 justify-content-center" id="mentor2026Container">
+                <!-- 2026 Mentor cards will be injected here -->
+              </div>
+              <div class="text-center">
+                <button class="btn btn-dark-gray btn-large btn-rounded d-table d-lg-inline-block lg-mb-15px md-mx-auto show-more-button" id="showMoreButton2026">Show More</button>
+              </div>
+            </div>
+
+            <!-- Previous Year Mentors Tab -->
+            <div class="tab-pane fade in" id="previousYearMentors">
+              <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 justify-content-center" id="mentorPreviousContainer">
+                <!-- Previous Year Mentor cards will be injected here -->
+              </div>
+              <div class="text-center">
+                <button class="btn btn-dark-gray btn-large btn-rounded d-table d-lg-inline-block lg-mb-15px md-mx-auto show-more-button" id="showMoreButtonPrevious">Show More</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="text-center">
-            <button class="btn btn-dark-gray btn-large btn-rounded d-table d-lg-inline-block lg-mb-15px md-mx-auto show-more-button" id="showMoreButton">Show More</button>
-        </div>
+      </div>
     </div>
 </section>
 
@@ -487,8 +506,55 @@
     <script type="text/javascript" src="js/vendors.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script>
-      // Data for mentors
-      const mentors = [
+      // 2026 Mentors Data
+      const mentors2026 = [
+        { name: "Anand Dawson", designation: "CEO, Unmissable AI", linkedin: "https://www.linkedin.com/in/holaworld", image: "mentors/Anand Dawson.jpg" },
+        { name: "Anupam Pandey", designation: "Head - Investments and Programs, Anthill Ventures", linkedin: "https://www.linkedin.com/in/anupam-pandey19/", image: "mentors/Anupam Pandey.jpg" },
+        { name: "Bhavi Desai", designation: "Principal, 1Crowd VC Fund", linkedin: "https://www.linkedin.com/in/bhavi-desai-2b896356/", image: "mentors/Bhavi Desai.jpg" },
+        { name: "Chandrashekar Kupperi", designation: "General Partner, Peaceful Progress Fund", linkedin: "https://www.linkedin.com/in/chandrashekar-kupperi-7472b86/", image: "mentors/Chandrashekar Kupperi.jpg" },
+        { name: "Chetan Prakash Sancheti", designation: "Partner, Anicut Capital", linkedin: "https://in.linkedin.com/in/chetan-prakash-sancheti-cps-4236106", image: "mentors/Chetan Prakash Sancheti.jpg" },
+        { name: "Chinmay Marulkar", designation: "Investment Professional, Blinc Invest", linkedin: "https://www.linkedin.com/in/chinmay-marulkar-b6976531/", image: "mentors/Chinmay Marulkar.jpg" },
+        { name: "Dr. Akhil Sahai", designation: "Advisor, Dallas Venture Capital", linkedin: "https://www.linkedin.com/in/akhilsahai", image: "mentors/Dr. Akhil Sahai.jpg" },
+        { name: "Dyuti Biswas", designation: "Startup Mentor", linkedin: "https://www.linkedin.com/in/dyutibiswas", image: "mentors/Dyuti Biswas.jpg" },
+        { name: "Gaurav Shah", designation: "Managing Partner, Arete Ventures", linkedin: "https://www.linkedin.com/in/shahgaurav1", image: "mentors/Gaurav Shah.jpg" },
+        { name: "Harshit Chouksey", designation: "Startup Mentor", linkedin: "https://in.linkedin.com/in/harshitchouksey", image: "mentors/Harshit Chouksey.jpg" },
+        { name: "Ketika Singhal", designation: "Investment Lead - Distribution and Supply Chain, Caret Capital", linkedin: "https://www.linkedin.com/in/ketika-singhal-6b39686a/", image: "mentors/Ketika Singhal.jpg" },
+        { name: "Krishnakumar Pandya", designation: "V21 Group of Ventures", linkedin: "https://www.linkedin.com/in/krishna-pandya-81388322", image: "mentors/Krishnakumar Pandya.jpg" },
+        { name: "Kush Gupta", designation: "CEO, ZED", linkedin: "https://www.linkedin.com/in/thekushgupta", image: "mentors/Kush Gupta.jpg" },
+        { name: "Maneesh Srivastava", designation: "Founder and Director, AlphaValue Consulting", linkedin: "https://www.linkedin.com/in/maneeshsrivastav", image: "mentors/Maneesh Srivastava.jpg" },
+        { name: "Mishka Rana", designation: "CEO, Iconify Consulting Group", linkedin: "https://www.linkedin.com/in/mishkarana", image: "mentors/Mishka Rana.jpg" },
+        { name: "Murali Rajagopalan", designation: "Startup Mentor", linkedin: "https://www.linkedin.com/in/mrajagopalan1", image: "mentors/Murali Rajagopalan.jpg" },
+        { name: "Natasha Kothari", designation: "Director and Partner, 1Crowd VC Fund", linkedin: "https://www.linkedin.com/in/natasha-kothari-shah-a5346512/", image: "mentors/Natasha Kothari.jpg" },
+        { name: "Palak Abhani", designation: "Investment - Education Sector & CFO, Blinc Invest", linkedin: "https://www.linkedin.com/in/palak-abhani-2913308a/", image: "mentors/Palak Abhani.jpg" },
+        { name: "Premkumar Manavazhi", designation: "Partner, Campus Angels Network", linkedin: "https://www.linkedin.com/in/prem-manavazhi-b61601188", image: "mentors/Premkumar Manavazhi.jpg" },
+        { name: "Raghav Gupta", designation: "Vice President, Endiya Partners", linkedin: "https://www.linkedin.com/in/raghav-gupta/", image: "mentors/Raghav Gupta.jpg" },
+        { name: "Rahul Lakhmani", designation: "Founder and CEO, Skiify", linkedin: "https://www.linkedin.com/in/rahullakhmani/", image: "mentors/Rahul Lakhmani.jpg" },
+        { name: "Rajiv Manalal Gupta", designation: "Founder and MD, Worxpertise Group", linkedin: "https://www.linkedin.com/in/rajivgupta11", image: "mentors/Rajiv Manalal Gupta.jpg" },
+        { name: "Rathnakar Samavedam", designation: "Investment Director, Hyderabad Angels Fund", linkedin: "https://www.linkedin.com/in/rathnakar-samavedam-816085a/", image: "mentors/Rathnakar Samavedam.jpg" },
+        { name: "Rohit Jhunjhunwala", designation: "Partner, IN44 Capital", linkedin: "https://www.linkedin.com/in/rohitjhun", image: "mentors/Rohit Jhunjhunwala.jpg" },
+        { name: "Rohit Sar", designation: "Investor, Picus Capital", linkedin: "https://www.linkedin.com/in/rohit-sar/", image: "mentors/Rohit Sar.jpg" },
+        { name: "S VENKAT KUMAR", designation: "Principal Consultant, KONE", linkedin: "https://in.linkedin.com/in/venkat-kumar-siddineni-a6538756", image: "mentors/S VENKAT KUMAR.jpg" },
+        { name: "Sana Afreen", designation: "Growth and Venture, Abyro Capital", linkedin: "https://in.linkedin.com/in/afreensana", image: "mentors/Sana Afreen.jpg" },
+        { name: "Sanchit Soni", designation: "VC, Chandigarh Angels Network", linkedin: "https://www.linkedin.com/in/sanchit-soni/", image: "mentors/Sanchit Soni.jpg" },
+        { name: "Sandeep Yadav", designation: "Startup Mentor", linkedin: "https://www.linkedin.com/in/sandeepbharat/", image: "mentors/Sandeep Yadav.jpg" },
+        { name: "Sanjana De", designation: "Chief Manager - New Ventures, The Times of India", linkedin: "https://www.linkedin.com/in/sanjanade", image: "mentors/Sanjana De.jpg" },
+        { name: "Shyam Sekar S", designation: "Chief Mentor and Strategiest, Startup Xperts", linkedin: "https://www.linkedin.com/in/shyamsekar/", image: "mentors/Shyam Sekar S.jpg" },
+        { name: "Sonia Shukla", designation: "Principal, 1Crowd VC Fund", linkedin: "https://www.linkedin.com/in/sonia-shukla/", image: "mentors/Sonia Shukla.jpg" },
+        { name: "Sriharsha Nallamilli", designation: "CEO, Markepreneur", linkedin: "https://www.linkedin.com/in/sriharsha-nallamilli", image: "mentors/Sriharsha Nallamilli.jpg" },
+        { name: "Subhajit Bhattacharya", designation: "Associate Vice President, Accenture", linkedin: "https://www.linkedin.com/in/subhajitbhattacharya/", image: "mentors/Subhajit Bhattacharya.jpg" },
+        { name: "Swarup Pandya", designation: "Senior Manager, IIMA Ventures", linkedin: "https://www.linkedin.com/in/swarup-pandya-1b955b25/", image: "mentors/Swarup Pandya.jpg" },
+        { name: "Tanmay Mukherji", designation: "Founder and Director, Zeta Innovation Labs Foundation", linkedin: "https://www.linkedin.com/in/tmukherji/", image: "mentors/Tanmay Mukherji.jpg" },
+        { name: "Tata Teja", designation: "ED/CIO Office, GMR Group", linkedin: "https://www.linkedin.com/in/tatateja", image: "mentors/Tata Teja.jpg" },
+        { name: "Vamsi Patti", designation: "Associate, Hitachi Ventures", linkedin: "https://www.linkedin.com/in/vamsipatti", image: "mentors/Vamsi Patti.jpg" },
+        { name: "Veena Hanamsagar", designation: "Hifi Digital Axis Pvt Ltd", linkedin: "https://www.linkedin.com/in/veenahanamsagar/", image: "mentors/Veena Hanamsagar.png" },
+        { name: "Vibhu Dixit", designation: "Founder, AVGROUPS", linkedin: "https://www.linkedin.com/in/vibhu-dixit/", image: "mentors/Vibhu Dixit.jpg" },
+        { name: "Vineet Khurana", designation: "CEO, SACC", linkedin: "https://in.linkedin.com/in/vineetkhurana", image: "mentors/Vineet Khurana.jpg" },
+        { name: "Vishal Katariya", designation: "Ankur Capital", linkedin: "https://www.linkedin.com/in/vishal-katariya-236695a0/", image: "mentors/Yagnesh Sanghrajka.jpg" },
+        { name: "Yagnesh Sanghrajka", designation: "247VC", linkedin: "https://www.linkedin.com/in/yagnesh270766", image: "mentors/Yagnesh Sanghrajka.jpg" }
+      ];
+
+      // Previous Year Mentors Data
+      const mentorsPrevious = [
           {
               name: "Akshay Banda",
               designation: "Serial Entrepreneur | VC Analyst",
@@ -766,11 +832,7 @@
         image: "https://media.licdn.com/dms/image/v2/D4D03AQGkAY_nLJ2hCw/profile-displayphoto-scale_400_400/B4DZiEBnqpHYAg-/0/1754561674521?e=1757548800&v=beta&t=x4qHk9HYC4EzD1mNbRbGlMaad4_NeVGgyawmrj1a_dg",
     }
     ];
-      const mentorContainer = document.getElementById("mentorContainer");
-      const showMoreButton = document.getElementById("showMoreButton");
-      const itemsPerPage = 18; // Number of mentors to show at a time
-      let currentIndex = 0; // Tracks how many mentors are currently visible
-  
+      
       // Function to create mentor card HTML
       function createMentorCard(mentor) {
           return `
@@ -796,7 +858,7 @@
                           <ul>
                               <li>
                                   <a class="linkedin" href="${mentor.linkedin}" target="_blank">
-                                      <img style="height:25px; width:25px; border-radius:"100%" src="https://ges-25.vercel.app/assets/images/image.png">
+                                      <img style="height:25px; width:25px; border-radius:100%" src="https://ges-25.vercel.app/assets/images/image.png">
                                   </a>
                               </li>
                           </ul>
@@ -806,28 +868,35 @@
           `;
       }
   
-      // Function to show more mentors
-      function showMoreMentors() {
-          const nextIndex = currentIndex + itemsPerPage;
-  
-          for (let i = currentIndex; i < nextIndex && i < mentors.length; i++) {
-              const mentorCardHTML = createMentorCard(mentors[i]);
-              mentorContainer.innerHTML += mentorCardHTML;
+      // Function to populate tab content
+      function initializeMentorTab(mentors, containerId, buttonId) {
+          const container = document.getElementById(containerId);
+          const button = document.getElementById(buttonId);
+          const itemsPerPage = 18;
+          let currentIndex = 0;
+
+          function showMoreMentors() {
+              const nextIndex = currentIndex + itemsPerPage;
+
+              for (let i = currentIndex; i < nextIndex && i < mentors.length; i++) {
+                  const mentorCardHTML = createMentorCard(mentors[i]);
+                  container.innerHTML += mentorCardHTML;
+              }
+
+              currentIndex = nextIndex;
+
+              if (currentIndex >= mentors.length) {
+                  button.style.visibility = "hidden";
+              }
           }
-  
-          currentIndex = nextIndex;
-  
-          // Hide the button if all mentors are shown
-          if (currentIndex >= mentors.length) {
-              showMoreButton.style.visibility = "hidden";
-          }
+
+          showMoreMentors();
+          button.addEventListener("click", showMoreMentors);
       }
-  
-      // Initialize with the first batch of mentors
-      showMoreMentors();
-  
-      // Add event listener for the button
-      showMoreButton.addEventListener("click", showMoreMentors);
-  </script>
+
+      // Initialize both tabs
+      initializeMentorTab(mentors2026, "mentor2026Container", "showMoreButton2026");
+      initializeMentorTab(mentorsPrevious, "mentorPreviousContainer", "showMoreButtonPrevious");
+    </script>
   </body>
 </html>

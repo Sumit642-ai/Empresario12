@@ -296,6 +296,11 @@
                   >Outreach</a
                 >
               </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab_sec4"  style="margin-top: 10px;"
+                  >Incubation Partners</a
+                >
+              </li>
             </ul>
             <div class="tab-content">
               <!-- start tab content -->
@@ -327,6 +332,17 @@
     <div class="container">
       <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2 justify-content-center" id="tab3-container">
         <!-- Elements for Tab 3 will be added here dynamically -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tab 4 -->
+<div class="tab-pane fade in" id="tab_sec4">
+  <div class="row justify-content-center align-items-center">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2 justify-content-center" id="tab4-container">
+        <!-- Elements for Tab 4 will be added here dynamically -->
       </div>
     </div>
   </div>
@@ -602,429 +618,95 @@
       // Data for tabs
 const tabsData = {
   tab1: [
-    {
-      href: "https://www.aeravtiventures.com",
-      imgSrc: "final_images/Associations/aeravati ventures.png",
-      imgAlt: "3one4 Capital",
-      imageMargin: '0px',
-    },
-    {
-      href: "https://alphavalue.co.in/",
-      imgSrc: "final_images/Associations/alphavalue.jpg",
-      imgAlt: "100 Unicorns",
-      imageMargin: '35px',
-    },
-    {
-      href: "https://www.100x.vc/",
-      imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9RGFeXOYmrEoKKwj2ryIqo_W9TfpmhKQ2KA&s",
-      imgAlt: "100x VC",
-      imageMargin: '0px',
-    },
-    {
-      href: "https://www.areteven.com/",
-      imgSrc: "final_images/Associations/Arete Ventures.png",
-      imgAlt: "Ankur Capital",
-      imageMargin: '0px',
-    },
-    {
-      href: "https://capria.vc/",
-      imgSrc: "final_images/Associations/biorx.jpg",
-      imgAlt: "Capria",
-      imageMargin: '0px',
-    },
-    {
-      href: "https://blinc.com/fi-en",
-      imgSrc: "final_images/Associations/Blinc.jpg",
-      imgAlt: "Omnivore",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://www.yourcampusfund.com/",
-      imgSrc: "final_images/Associations/Campus Fund.png",
-      imgAlt: "Pedal Start",
-      imageMargin: '0px',
-      imageScale:1.5,
-    },
-    {
-      href: "https://chandigarhangelsnetwork.com/",
-      imgSrc: "final_images/Associations/Chandigarh Angels Network.jpg",
-      imgAlt: "India Accelerator",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://freeflow.zone/",
-      imgSrc: "final_images/Associations/Freeflow Ventures.jpg",
-      imgAlt: "IAN",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://www.guptajiinvests.in/",
-      imgSrc: "https://static.wixstatic.com/media/eb6b4e_93d2f8c2dc6c4c8e8a69524702979f4d~mv2.png/v1/fill/w_418,h_142,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Without%20background%20logo%20Guptaji%20invests-.png",
-      imgAlt: "IP Ventures",
-      imageMargin: '15px',
-    },
-    {
-      href: "https://www.huddleventures.vc/",
-      imgSrc: "final_images/Associations/Huddle.jpg",
-      imgAlt: "IVYCap",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://leadangels.in/",
-      imgSrc: "final_images/Associations/Hyderabad Angels.jpg",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://www.ice-ventures.com/",
-      imgSrc: "final_images/Associations/Ice vc.jpg",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://marsshot.vc/",
-      imgSrc: "final_images/Associations/Marsshot.jpg",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://www.peacefulprogress.in/",
-      imgSrc: "final_images/Associations/Peaceful Progress.png",
-      imgAlt: "LA",
-      imageMargin: '0px',
-    },
-    {
-      href: "https://pentathlon.vc/",
-      imgSrc: "final_images/Associations/Pentathelon.jpg",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://seafund.in/",
-      imgSrc: "final_images/Associations/Seafund.jpg",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://www.shastra.vc/",
-      imgSrc: "final_images/Associations/Shastra VC.jpg",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://svpindia.org/",
-      imgSrc: "final_images/Associations/Social Venture Partners.jpg",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://www.specialeinvest.com/",
-      imgSrc: "final_images/Associations/Speciale Invest.png",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://springup10x.com/",
-      imgSrc: "final_images/Associations/SpringUp Capital.png",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://saccindia.org/india/",
-      imgSrc: "final_images/Associations/Startup Accelerator Chamber of Commerce (SACC).jpg",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://www.startupxperts.com/",
-      imgSrc: "final_images/Associations/Startup Xperts.jpg",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://www.sucseed.biz/",
-      imgSrc: "final_images/Associations/Sucseed.jpg",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://leo.capital/",
-      imgSrc: "https://media.licdn.com/dms/image/v2/C4D0BAQHjoMUDMyQ7aA/company-logo_200_200/company-logo_200_200/0/1631324848096?e=1746662400&v=beta&t=Ry9KEFEif27OgFaHGeqSyitsBZqs9rfS7mUwFCVaEjk",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://www.linkedin.com/company/coinnovateventures/?originalSubdomain=in",
-      imgSrc: "https://media.licdn.com/dms/image/v2/C560BAQEM1V_iqvBxPw/company-logo_200_200/company-logo_200_200/0/1635006843894?e=1746662400&v=beta&t=P33Kksv2bDhTv7UN3L-vCnZkO_AmfKTkpT_F4mZmHm4",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://pavestone.vc/",
-      imgSrc: "https://media.licdn.com/dms/image/v2/C560BAQE_YomrBhMxOw/company-logo_200_200/company-logo_200_200/0/1657603566338/pavestone_capital_logo?e=1746662400&v=beta&t=svKzBO0GmcuR9ILzWoPIQg9t-Le3qqwWqD5bPlo97NE",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://iimcip.org/",
-      imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ643sX7VXmSCSoB9IbE9-5TyV76N3cjrlaHw&s",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://censie.in/",
-      imgSrc: "https://media.licdn.com/dms/image/v2/D560BAQHa-yHy6GnxUg/company-logo_200_200/company-logo_200_200/0/1719515476796/censiecapital_logo?e=2147483647&v=beta&t=TInRQBzoTopRl5I01VBoQG9FTOFqQyj185QL2_fdKCc",
-      imgAlt: "LA",
-      imageMargin: '30px',
-      imageScale:1.3
-    },
-    {
-      href: "https://bharat.fund/",
-      imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRROe8g02u3TK361-UAW67xg1KiwsPS6FbO8g&s",
-      imgAlt: "LA",
-      imageMargin: '30px',
-    },
-    {
-      href: "https://mountjudi.com/",
-      imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlI1w3C2X3AWuHQqMEV0-4BFDWQ0OY_kTgtQ&s",
-      imgAlt: "LA",
-      imageMargin: '30px',
-      imageScale:1.3
-    },
-    {
-      href: "http://biorx.in/",
-      imgSrc: "https://media.licdn.com/dms/image/v2/C560BAQGAlTgw-j8UpQ/company-logo_200_200/company-logo_200_200/0/1630662220723/biorx_venture_advisors_plc_logo?e=2147483647&v=beta&t=Hm6Sj2SgQEgFdYsQbVGQC_Uz9ijRYP9o1YO97O3HCGk",
-      imgAlt: "LA",
-      imageMargin: '30px',
-      imageScale:1.3
-    },
-    {
-      href: "https://annovasolutions.com/",
-      imgSrc: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7ei2hffwTo6h47-L1QYEREvl6EtU62AlDPw&s",
-      imgAlt: "LA",
-      imageScale:1.3
-    },
-    {
-      href: "https://annovasolutions.com/",
-      imgSrc: "https://cutshort-data.s3.amazonaws.com/cloudfront/public/companies/57f73480c47d3d1b6074df95/logo-1643365665099-Asab_Logo.png",
-      imgAlt: "LA",
-      imageMargin: '30px',
-      imageScale:1.3
-    },
-    {
-      href: "https://www.patnifinancial.com/",
-      imgSrc: "https://static-asset.inc42.com/patni-financial-advisors.png",
-      imgAlt: "LA",
-      imageMargin: '30px',
-      imageScale:1.3
-    },
-    {
-      href: "https://www.patnifinancial.com/",
-      imgSrc: "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,background=white,quality=75,width=400,height=400/event-covers/ga/4730e6a2-ef8f-46a0-8764-24908165ea02",
-      imgAlt: "LA",
-      imageMargin: '30px',
-      imageScale:1.3
-    },
-    {
-      href: "https://www.patnifinancial.com/",
-      imgSrc: "https://cdn.theorg.com/204a76d8-3e34-4eb4-af34-c4e0eb657c09_medium.jpg",
-      imgAlt: "LA",
-      imageMargin: '30px',
-      imageScale:1.3
-    }
+    { href: "https://www.3ipartners.vc/", imgSrc: "association/3i Partners.jpg", imgAlt: "3i Partners", imageMargin: "30px" },
+    { href: "https://abyrocapital.com/", imgSrc: "association/Abyro Capital.jpg", imgAlt: "Abyro Capital", imageMargin: "30px" },
+    { href: "https://www.blincinvest.com/", imgSrc: "association/BLinC Invest.jpg", imgAlt: "BLinC Invest", imageMargin: "30px" },
+    { href: "https://bluehill.vc/", imgSrc: "association/Bluehill.VC.jpg", imgAlt: "Bluehill VC", imageMargin: "30px" },
+    { href: "https://capital-a.vc/", imgSrc: "association/Capital A.jpg", imgAlt: "Capital A", imageMargin: "30px" },
+    { href: "https://caretcap.com/en.html", imgSrc: "association/Caret Capital.jpg", imgAlt: "Caret Capital", imageMargin: "30px" },
+    { href: "https://chandigarhangelsnetwork.com/", imgSrc: "association/Chandigarh Angels Network.jpg", imgAlt: "Chandigarh Angels Network", imageMargin: "30px" },
+    { href: "http://coinnovateventures.com/", imgSrc: "association/Coinnovate Ventures.jpg", imgAlt: "Coinnovate Ventures", imageMargin: "30px" },
+    { href: "https://enlighten.capital/", imgSrc: "association/Enlighten Capital.jpg", imgAlt: "Enlighten Capital", imageMargin: "30px" },
+    { href: "https://expertdojo.com/", imgSrc: "association/Expert Dojo.jpg", imgAlt: "Expert Dojo", imageMargin: "30px" },
+    { href: "https://freeflow.zone/", imgSrc: "association/FreeFlow Ventures.jpg", imgAlt: "FreeFlow Ventures", imageMargin: "30px" },
+    { href: "https://gembacapital.in/", imgSrc: "association/Gemba Capital.jpg", imgAlt: "Gemba Capital", imageMargin: "30px" },
+    { href: "https://www.iconifyconsultinggroup.com/", imgSrc: "association/Iconify Consulting Group.jpg", imgAlt: "Iconify Consulting Group", imageMargin: "30px" },
+    { href: "https://iimaventures.com/", imgSrc: "association/IIMA Ventures.jpg", imgAlt: "IIMA Ventures", imageMargin: "30px" },
+    { href: "https://in44capital.com/", imgSrc: "association/IN44 Capital.jpg", imgAlt: "IN44 Capital", imageMargin: "30px" },
+    { href: "https://marsshot.vc/", imgSrc: "association/Mars Shot Ventures.jpg", imgAlt: "Mars Shot Ventures", imageMargin: "30px" },
+    { href: "https://mountjudi.com/", imgSrc: "association/Mount Judi Ventures.jpg", imgAlt: "Mount Judi Ventures", imageMargin: "30px" },
+    { href: "https://pentathlon.vc/", imgSrc: "association/Pentathlon Ventures.jpg", imgAlt: "Pentathlon Ventures", imageMargin: "30px" },
+    { href: "https://saccindia.org/india/", imgSrc: "association/SACC.png", imgAlt: "SACC", imageMargin: "30px" },
+    { href: "https://seafund.in/", imgSrc: "association/Seafund.jpg", imgAlt: "Seafund", imageMargin: "30px" },
+    { href: "https://www.shastra.vc/", imgSrc: "association/Shastra VC.jpg", imgAlt: "Shastra VC", imageMargin: "30px" },
+    { href: "https://www.smart.org.in/", imgSrc: "association/Smart Group.jpg", imgAlt: "Smart Group", imageMargin: "30px" },
+    { href: "https://www.startupxperts.com/", imgSrc: "association/Startup Xperts.jpg", imgAlt: "Startup Xperts", imageMargin: "30px" },
+    { href: "https://www.startupbootcamp.in/pages/home", imgSrc: "association/Startupbootcamp India.jpg", imgAlt: "Startupbootcamp India", imageMargin: "30px" },
+    { href: "https://hyderabadangels.in/", imgSrc: "association/The Hyderabad Angels.jpg", imgAlt: "The Hyderabad Angels", imageMargin: "30px" },
+    { href: "https://www.theia-ventures.com/", imgSrc: "association/Theia Ventures.jpg", imgAlt: "Theia Ventures", imageMargin: "30px" },
+    { href: "https://www.ventanaventures.in/", imgSrc: "association/Ventana Ventures.jpg", imgAlt: "Ventana Ventures", imageMargin: "30px" },
+    { href: "https://venturegarage.in/", imgSrc: "association/Venture Garage.jpg", imgAlt: "Venture Garage", imageMargin: "30px" }
   ],
-  tab2:[
-  {
-    href: "https://www.3one4capital.com/",
-    imgSrc: "final_images/Partners/3one4 Capital.jpg",
-    imgAlt: "Blinc",
-    imageMargin: "0px",
-  },
-  {
-    href: "https://100unicorns.in/",
-    imgSrc: "final_images/Partners/100Unicorns.png",
-    imgAlt: "Anthil",
-    imageMargin: "20px",
-  },
-  {
-    href: "https://www.100x.vc/",
-    imgSrc: "final_images/Partners/100X.VC.png",
-    imgAlt: "Aeravti Ventures",
-    imageMargin: "30px",
-    imageScale: "1.3",
-  },
-  {
-    href: "https://alphavalue.co.in/",
-    imgSrc: "final_images/Partners/Ankur Capital.png",
-    imgAlt: "Alphavalue Consulting",
-    imageMargin: "0px",
-  },
-  {
-    href: "https://capria.vc/regions/india/",
-    imgSrc: "final_images/Partners/Capria India.jpg",
-    imgAlt: "Annova",
-    imageMargin: "0px",
-  },
-  {
-    href: "https://www.avansaber.com",
-    imgSrc: "final_images/Partners/download.png",
-    imgAlt: "Avansaber",
-    imageMargin: "30px",
-  },
-  {
-    href: "https://www.indiaaccelerator.co/",
-    imgSrc: "final_images/Partners/India Accelerator.jpg",
-    imgAlt: "BioRx",
-    imageMargin: "0px",
-  },
-  {
-    href: "https://iangroup.vc/",
-    imgSrc: "final_images/Partners/Indian Angel Network.png",
-    imgAlt: "Speciale Invest",
-    imageMargin: "0px",
-    imageScale:1.5
-  },
-  {
-    href: "https://ipventures.in/",
-    imgSrc: "final_images/Partners/Inflection Point Ventures.jpg",
-    imgAlt: "Guptaji Invest",
-    imageMargin: "30px",
-  },
-  {
-    href: "https://ivycamp.in/m",
-    imgSrc: "final_images/Partners/IvyCamp Ventures.jpg",
-    imgAlt: "Unlock Venture Partners",
-    imageMargin: "30px",
-  },
-  {
-    href: "https://leadangels.in/",
-    imgSrc: "final_images/Partners/Lead Angels.jpg",
-    imgAlt: "Huddle",
-    imageMargin: "0px",
-  },
-  {
-    href: "https://in.linkedin.com/company/mgf-kavachh",
-    imgSrc: "final_images/Partners/MountTech Growth Fund.jpg",
-    imgAlt: "Ice Ventures",
-    imageMargin: "30px",
-  },
-  {
-    href: "https://omnivore.com",
-    imgSrc: "final_images/Partners/Omnivore Partners.jpg",
-    imgAlt: "Marshot Ventures",
-    imageMargin: "30px",
-  },
-  {
-    href: "https://www.pedalstart.com/",
-    imgSrc: "final_images/Partners/PedalStart.jpg",
-    imgAlt: "Peaceful Progress",
-    imageMargin: "30px",
-    imageScale:1
-  },
-  {
-    href: "https://trifectacapital.in/",
-    imgSrc: "final_images/Partners/Trifecta Capital.jpg",
-    imgAlt: "Pentathlon",
-    imageMargin: "0px",
-    imageScale:1
-  },
-  {
-    href: "https://wefunder.com/",
-    imgSrc: "final_images/Partners/We Founder Circle.jpg",
-    imgAlt: "Sea Fund",
-    imageMargin: "30px",
-    imageScale:1.3
-  },
-  {
-    href: "https://www.1crowd.co/",
-    imgSrc: "https://media.licdn.com/dms/image/v2/C4E0BAQFmJiCU2gt7VA/company-logo_200_200/company-logo_200_200/0/1631300788169?e=2147483647&v=beta&t=3_aY1wBD4fwfXM_AJjfKdrX2usK7MGJv8rMlmxIjm4g",
-    imgAlt: "Sea Fund",
-    imageMargin: "30px",
-    imageScale:1.3
-  }
-],
-tab3:[
-  {
-    href: "https://in.linkedin.com/company/calcutta-angels-network",
-    imgSrc: "final_images/Outreach Partners/Calcutta Angels network.jpg",
-    imgAlt: "Windrose Capital",
-    imageMargin: "30px",
-    imageScale:1.3
-  },
-  {
-    href: "https://www.caretcapital.in/",
-    imgSrc: "final_images/Outreach Partners/Caret Capital.jpg",
-    imgAlt: "Caret Capital",
-    imageMargin: "30px",
-  },
-  {
-    href: "https://cognoscent.in/",
-    imgSrc: "final_images/Outreach Partners/Cognoscent Ventures.jpg",
-    imgAlt: "Coinnovate Ventures",
-    imageMargin: "30px",
-  },
-  {
-    href: "https://coinnovateventures.com",
-    imgSrc: "final_images/Outreach Partners/Coinnovateventures.jpg",
-    imgAlt: "Pavestone Capital",
-    imageMargin: "20px",
-    imageScale:1
-  },
-  {
-    href: "https://indiqube.com",
-    imgSrc: "final_images/Outreach Partners/download.jpg",
-    imgAlt: "Indiqube",
-    imageMargin: "30px",
-    imageScale: 1.5
-  },
-  {
-    href: "https://indiqube.com",
-    imgSrc: "final_images/Outreach Partners/IndiQube.jpg",
-    imgAlt: "Realtime",
-    imageMargin: "30px",
-    imageScale:1.3
-  },
-  {
-    href: "https://chennai.tie.org/",
-    imgSrc: "final_images/Outreach Partners/TiE Chennai.png",
-    imgAlt: "Tie Chennai",
-    imageMargin: "30px",
-  },
-  {
-    href: "https://tie.org/tie-regions-chapters/",
-    imgSrc: "final_images/Outreach Partners/TiE Nagpur.jpg",
-    imgAlt: "TIE Nagpur",
-    imageMargin: "30px",
-    imageScale:1
-  },
-  {
-    href: "https://tie.org/tie-regions-chapters/",
-    imgSrc: "final_images/Outreach Partners/TiE Surat.jpg",
-    imgAlt: "TIE Surat",
-    imageMargin: "30px",
-    imageScale:1.2
-  },
-  {
-    href: "https://ucimpower.com/",
-    imgSrc: "final_images/Outreach Partners/UC Impower.jpg",
-    imgAlt: "TIE Udaipur",
-    imageMargin: "30px",
-    imageScale:1.2
-  },
-  {
-    href: "https://venturegarage.in",
-    imgSrc: "final_images/Outreach Partners/Venture Garage.jpg",
-    imgAlt: "Venture Garage",
-    imageMargin: "0px",
-  },
-  {
-    href: "https://www.windrose.capital/",
-    imgSrc: "final_images/Outreach Partners/Windrose Capital.png",
-    imgAlt: "Venture Garage",
-    imageMargin: "0px",
-  },
-]
-
+  tab2: [
+    { href: "https://100unicorns.in/", imgSrc: "partner/100Unicorns.jpg", imgAlt: "100Unicorns", imageMargin: "30px" },
+    { href: "https://login.1crowd.co/", imgSrc: "partner/1crowd.jpg", imgAlt: "1crowd", imageMargin: "30px" },
+    { href: "https://www.247vc.in/", imgSrc: "partner/247vc.jpg", imgAlt: "247vc", imageMargin: "30px" },
+    { href: "https://www.3one4capital.com/", imgSrc: "partner/3one4 Capital.jpg", imgAlt: "3one4 Capital", imageMargin: "30px" },
+    { href: "https://www.accel.com/", imgSrc: "partner/Accel.jpg", imgAlt: "Accel", imageMargin: "30px" },
+    { href: "https://www.acclime.com/", imgSrc: "partner/Acclime.jpg", imgAlt: "Acclime", imageMargin: "30px" },
+    { href: "https://alteriacapital.com/", imgSrc: "partner/Alteria Capital.jpg", imgAlt: "Alteria Capital", imageMargin: "30px" },
+    { href: "https://www.anicutcapital.com/", imgSrc: "partner/Anicut Capital.jpg", imgAlt: "Anicut Capital", imageMargin: "30px" },
+    { href: "https://www.ankurcapital.com/", imgSrc: "partner/Ankur Capital.jpg", imgAlt: "Ankur Capital", imageMargin: "30px" },
+    { href: "https://anthillventures.com/", imgSrc: "partner/Anthill Ventures.jpg", imgAlt: "Anthill Ventures", imageMargin: "30px" },
+    { href: "https://www.antler.co/", imgSrc: "partner/Antler.jpg", imgAlt: "Antler", imageMargin: "30px" },
+    { href: "https://www.areteven.com/", imgSrc: "partner/Arete Ventures.jpg", imgAlt: "Arete Ventures", imageMargin: "30px" },
+    { href: "https://www.thecampusangels.com/", imgSrc: "partner/Campus Angels Network.jpg", imgAlt: "Campus Angels Network", imageMargin: "30px" },
+    { href: "https://capria.vc/regions/india/", imgSrc: "partner/Capria India.jpg", imgAlt: "Capria India", imageMargin: "30px" },
+    { href: "https://www.joinef.com/", imgSrc: "partner/Entrepreneurs First.jpg", imgAlt: "Entrepreneurs First", imageMargin: "30px" },
+    { href: "https://www.generalcatalyst.com/", imgSrc: "partner/General Catalyst.jpg", imgAlt: "General Catalyst", imageMargin: "30px" },
+    { href: "https://www.indiaaccelerator.co/", imgSrc: "partner/India Accelerator.jpg", imgAlt: "India Accelerator", imageMargin: "30px" },
+    { href: "https://iangroup.vc/", imgSrc: "partner/Indian Angel Network.jpg", imgAlt: "Indian Angel Network", imageMargin: "30px" },
+    { href: "https://ipventures.in/", imgSrc: "partner/Inflection Point Ventures.jpg", imgAlt: "Inflection Point Ventures", imageMargin: "30px" },
+    { href: "https://kae-capital.com/", imgSrc: "partner/Kae Capital.jpg", imgAlt: "Kae Capital", imageMargin: "30px" },
+    { href: "https://kolkataventures.com/", imgSrc: "partner/Kolkata Ventures.jpg", imgAlt: "Kolkata Ventures", imageMargin: "30px" },
+    { href: "https://myprobuddy.com/", imgSrc: "partner/MyProBuddy.jpg", imgAlt: "MyProBuddy", imageMargin: "30px" },
+    { href: "https://www.omnivore.vc/", imgSrc: "partner/Omnivore.jpg", imgAlt: "Omnivore", imageMargin: "30px" },
+    { href: "https://www.peacefulprogress.in/", imgSrc: "partner/Peaceful Progress.jpg", imgAlt: "Peaceful Progress", imageMargin: "30px" },
+    { href: "https://www.pedalstart.com/", imgSrc: "partner/PedalStart.jpg", imgAlt: "PedalStart", imageMargin: "30px" },
+    { href: "https://www.primevp.in/", imgSrc: "partner/Prime Venture Partners.jpg", imgAlt: "Prime Venture Partners", imageMargin: "30px" },
+    { href: "https://razorpay.com/rize", imgSrc: "partner/Razorpay Rize.jpg", imgAlt: "Razorpay Rize", imageMargin: "30px" },
+    { href: "https://www.sucseed.biz/", imgSrc: "partner/Sucseed Ventures.jpg", imgAlt: "Sucseed Ventures", imageMargin: "30px" },
+    { href: "https://www.trifecta.vc/", imgSrc: "partner/Trifecta Capital.jpg", imgAlt: "Trifecta Capital", imageMargin: "30px" },
+    { href: "https://unituscapital.com/", imgSrc: "partner/Unitus Capital.jpg", imgAlt: "Unitus Capital", imageMargin: "30px" }
+  ],
+  tab3: [
+    { href: "https://www.alphavalue.co.in/", imgSrc: "outreach/AlphaValue Consulting.jpg", imgAlt: "AlphaValue Consulting", imageMargin: "30px" },
+    { href: "https://biorx.in/", imgSrc: "outreach/BIORx Ventures.jpg", imgAlt: "BIORx Ventures", imageMargin: "30px" },
+    { href: "https://www.btbventure.com/", imgSrc: "outreach/BTB Ventures.jpg", imgAlt: "BTB Ventures", imageMargin: "30px" },
+    { href: "https://censie.in/", imgSrc: "outreach/Censie Capital.jpg", imgAlt: "Censie Capital", imageMargin: "30px" },
+    { href: "https://cogniphy.com/", imgSrc: "outreach/Cogniphy.jpg", imgAlt: "Cogniphy", imageMargin: "30px" },
+    { href: "https://ghlindiaventures.com/", imgSrc: "outreach/GHL India Ventures.jpg", imgAlt: "GHL India Ventures", imageMargin: "30px" },
+    { href: "http://ice.vc/", imgSrc: "outreach/Ice.VC.jpg", imgAlt: "Ice VC", imageMargin: "30px" },
+    { href: "https://ideacapital.ventures/", imgSrc: "outreach/IdeaCapital Ventures.png", imgAlt: "IdeaCapital Ventures", imageMargin: "30px" },
+    { href: "https://indiqube.com/", imgSrc: "outreach/Indiqube.jpg", imgAlt: "Indiqube", imageMargin: "30px" },
+    { href: "https://www.katrelaventures.com/", imgSrc: "outreach/Katrela Ventures.jpg", imgAlt: "Katrela Ventures", imageMargin: "30px" },
+    { href: "https://pavestone.vc/", imgSrc: "outreach/Pavestone.jpg", imgAlt: "Pavestone", imageMargin: "30px" },
+    { href: "https://www.linkedin.com/company/sks-capital-and-research/?originalSubdomain=in", imgSrc: "outreach/SKS Capital and Research.jpg_", imgAlt: "SKS Capital and Research", imageMargin: "30px" },
+    { href: "https://springup10x.com/", imgSrc: "outreach/SpringUp Capital.jpg", imgAlt: "SpringUp Capital", imageMargin: "30px" },
+    { href: "https://stintstudio.com/", imgSrc: "outreach/Stint Studio.jpg", imgAlt: "Stint Studio", imageMargin: "30px" },
+    { href: "https://nagpur.tie.org/?C=N;O=D", imgSrc: "outreach/TiE Nagpur.jpg", imgAlt: "TiE Nagpur", imageMargin: "30px" },
+    { href: "https://www.tiepune.org/", imgSrc: "outreach/TiE Pune.jpg", imgAlt: "TiE Pune", imageMargin: "30px" }
+  ],
+  tab4: [
+    { href: "https://www.aauincubator.in/", imgSrc: "association/AIC AAU.jpg", imgAlt: "AIC AAU", imageMargin: "30px" },
+    { href: "https://aicpecf.org/", imgSrc: "association/AIC PECF.jpg", imgAlt: "AIC PECF", imageMargin: "30px" },
+    { href: "https://aicraise.com/", imgSrc: "association/AIC Raise.jpg", imgAlt: "AIC Raise", imageMargin: "30px" },
+    { href: "https://aiih.acropolis.in/engage", imgSrc: "association/AIIH Foundation.jpg", imgAlt: "AIIH Foundation", imageMargin: "30px" },
+    { href: "http://ceid.daiict.ac.in/", imgSrc: "association/DCEI.jpg", imgAlt: "DCEI", imageMargin: "30px" },
+    { href: "https://icreate.org.in/", imgSrc: "association/iCreate.jpg", imgAlt: "iCreate", imageMargin: "30px" },
+    { href: "https://thestartuplab.in/", imgSrc: "association/The StartupLab.jpg", imgAlt: "The StartupLab", imageMargin: "30px" },
+    { href: "https://veltechtbi.com/", imgSrc: "association/Vel Tech Incubator.jpg", imgAlt: "Vel Tech Incubator", imageMargin: "30px" }
+  ]
 };
 
 // Function to create and append elements dynamically
@@ -1079,6 +761,7 @@ function populateTabContent(containerId, features) {
 populateTabContent("tab1-container", tabsData.tab1);
 populateTabContent("tab2-container", tabsData.tab2);
 populateTabContent("tab3-container", tabsData.tab3);
+populateTabContent("tab4-container", tabsData.tab4);
 
     </script>
   </body>
