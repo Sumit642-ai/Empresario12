@@ -273,8 +273,15 @@
     <section class="bg-very-light-gray">
       <div class="container-fluid">
         <h2 class="section-title">Incubation Partners</h2>
-        <div class="logo-grid" id="incubationGrid">
-          <!-- Partners will be loaded via JavaScript -->
+        <div class="logo-grid">
+          <div class="logo-item"><img src="incubation%20partner/AIC%20AAU.jpg" alt="AIC AAU" /></div>
+          <div class="logo-item"><img src="incubation%20partner/AIC%20Raise.jpg" alt="AIC Raise" /></div>
+          <div class="logo-item"><img src="incubation%20partner/AIC-PECF.jpg" alt="AIC-PECF" /></div>
+          <div class="logo-item"><img src="incubation%20partner/AIIH%20Foundation.jpg" alt="AIIH Foundation" /></div>
+          <div class="logo-item"><img src="incubation%20partner/DCEI.jpg" alt="DCEI" /></div>
+          <div class="logo-item"><img src="incubation%20partner/iCreate.jpg" alt="iCreate" /></div>
+          <div class="logo-item"><img src="incubation%20partner/The%20Startup%20Lab.jpg" alt="The Startup Lab" /></div>
+          <div class="logo-item"><img src="incubation%20partner/Vel%20Tech%20Technology%20Incubator.jpg" alt="Vel Tech Technology Incubator" /></div>
         </div>
       </div>
     </section>
@@ -339,30 +346,5 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/vendors.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
-    <script>
-      // Load incubation partner images
-      document.addEventListener('DOMContentLoaded', function() {
-        const partners = [
-          'AIC AAU.jpg',
-          'AIC Raise.jpg',
-          'AIC-PECF.jpg',
-          'AIIH Foundation.jpg',
-          'DCEI.jpg',
-          'iCreate.jpg',
-          'The Startup Lab.jpg',
-          'Vel Tech Technology Incubator.jpg'
-        ];
-        
-        const grid = document.getElementById('incubationGrid');
-        partners.forEach(partner => {
-          const folderPath = 'incubation partner/';
-          const imagePath = folderPath + partner;
-          const logoItem = document.createElement('div');
-          logoItem.className = 'logo-item';
-          logoItem.innerHTML = '<img src="' + imagePath + '" alt="' + partner.replace('.jpg', '') + '" />';
-          grid.appendChild(logoItem);
-        });
-      });
-    </script>
   </body>
 </html>
